@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_169byxj" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Decision_0tg9vbb" name="Decision 1">
+    <informationRequirement id="InformationRequirement_0w3gcot">
+      <requiredInput href="#Koerperfettmasse" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_13hiei0">
+      <requiredInput href="#Skelettmuskelmasse" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0jd8yum">
+      <input id="Input_1" camunda:inputVariable="Skelettmuskelmasse">
+        <inputExpression id="InputExpression_1" typeRef="double" expressionLanguage="feel">
+          <text>Skelettmuskelmasse</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="Trainingsvariante" typeRef="string" />
+      <rule id="DecisionRule_0llpl4c">
+        <inputEntry id="UnaryTests_088a9me">
+          <text>&gt;= Koerperfettmasse</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hi9pgc">
+          <text>"Kraft-Ausdauer-Zirkel"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0awhp99">
+        <inputEntry id="UnaryTests_1ntuy7g">
+          <text>&lt; Koerperfettmasse</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01p9a7p">
+          <text>"Kraft-Zirkel"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="Koerperfettmasse" name="Koerperfettmasse" />
+  <inputData id="Skelettmuskelmasse" name="Skelettmuskelmasse" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0tg9vbb">
+        <dc:Bounds height="80" width="180" x="210" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_12hhuwu" dmnElementRef="Koerperfettmasse">
+        <dc:Bounds height="45" width="125" x="157" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0739pb7" dmnElementRef="Skelettmuskelmasse">
+        <dc:Bounds height="45" width="125" x="377" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0w1azio" dmnElementRef="InformationRequirement_0w3gcot">
+        <di:waypoint x="220" y="248" />
+        <di:waypoint x="270" y="200" />
+        <di:waypoint x="270" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0b6502d" dmnElementRef="InformationRequirement_13hiei0">
+        <di:waypoint x="440" y="248" />
+        <di:waypoint x="330" y="200" />
+        <di:waypoint x="330" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,6 @@
+org/example/ProcessConstants.class
+org/example/ErfassungsbogenDelegate.class
+org/example/LoggerDelegate.class
+org/example/CamundaBpmProcessApplication.class
+org/example/EndDokumentationTrainingDelegate.class
+org/example/DBConnection.class

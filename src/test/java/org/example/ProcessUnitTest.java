@@ -41,4 +41,5 @@ public class ProcessUnitTest {
 
     assertThat(processInstance).isEnded();
   }
+
 }
