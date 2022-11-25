@@ -6,7 +6,6 @@ public class DBConnection {
 
         private static Connection conn;
 
-
         public static Connection getConnection() {
                 if (conn == null) {
                     createConnection();

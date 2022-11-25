@@ -1,0 +1,117 @@
+<!--
+{
+  "components": [
+    {
+      "text": "# Stammdaten",
+      "type": "text",
+      "id": "Field_1d2w4j0"
+    },
+    {
+      "label": "Vorname",
+      "type": "textfield",
+      "id": "Field_1ow0jmq",
+      "key": "Vorname",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "id": "Field_088980j",
+      "key": "Nachname",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Größe",
+      "type": "number",
+      "id": "Field_0q75a1h",
+      "key": "Groesse",
+      "properties": {},
+      "validate": {
+        "min": 100,
+        "max": 259
+      }
+    },
+    {
+      "label": "Alter",
+      "type": "number",
+      "id": "Field_0ays2ej",
+      "key": "Alter",
+      "validate": {
+        "min": 0,
+        "max": 100
+      },
+      "properties": {}
+    },
+    {
+      "values": [
+        {
+          "label": "Männlich",
+          "value": "Männlich"
+        },
+        {
+          "label": "Weiblich",
+          "value": "Weiblich"
+        },
+        {
+          "label": "Divers",
+          "value": "Divers"
+        }
+      ],
+      "label": "Geschlecht",
+      "type": "select",
+      "id": "Field_0rqmrgc",
+      "key": "Geschlecht",
+      "properties": {}
+    }
+  ],
+  "type": "default",
+  "id": "stammdaten",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.4.1"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 5
+}
+
+-->
+
+
+
+<form>
+  <div class="form-group">
+    <label for="vorname" class="col-sm-2 control-label">Vorname</label>
+    <div class="col-sm-10">
+      <input type="text"
+             name="vorname"
+             cam-variable-name="vorname"
+             cam-variable-type="String"
+             required
+             class="form-control" />
+    </div>
+
+    <label for="name" class="col-sm-2 control-label">Name</label>
+    <input type="text"
+            name="name"
+            cam-variable-name="name"
+            sam-variable-type="string"
+            required
+            class="form-controll">
+
+    <label for="groesse" class="col-sm-2 control-label">Größe (cm)</label>
+    <input type="number"
+            name="groesse"
+            cam-variable-name="groesse"
+            cam-variable-type="Integer"
+            required
+            class="form-controll">
+
+    <label for="alter" class="col-sm-2 control-label">Alter</label>
+    <input type="">
+  </div>
+</form>
