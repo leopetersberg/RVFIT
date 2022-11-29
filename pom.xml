@@ -208,8 +208,8 @@
         <version>2.2</version>
         <configuration>
           <url>http://localhost:8080/manager/text</url>
-          <username>admin</username>
-          <password>admin</password>
+          <username>maven</username>
+          <password>maven</password>
         </configuration>
       </plugin>
     </plugins>

@@ -51,7 +51,7 @@ public class UntersuchungCompleteDelegate implements TaskListener {
             delegateTask.removeVariable("datum");
             delegateTask.removeVariable("gewicht");
 
-            CamVariableMgmt.updateCamVariables();
+            CamVariableMgmt.updateCamVariables(delegateTask, Prozess_ID);
 
         } catch (Exception e) {
             e.printStackTrace();

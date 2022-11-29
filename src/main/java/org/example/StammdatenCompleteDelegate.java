@@ -16,7 +16,6 @@ public class StammdatenCompleteDelegate implements TaskListener {
         String geburtsdatum = (String) delegateTask.getVariable("geburtsdatum");
         String geschlecht = (String) delegateTask.getVariable("geschlecht");
         String Prozess_ID = (String) delegateTask.getProcessInstanceId();
-        System.out.println("Prozess_ID: " + Prozess_ID);
 
         Integer Kunden_id = null;
 
@@ -84,7 +83,7 @@ public class StammdatenCompleteDelegate implements TaskListener {
             delegateTask.removeVariable("geschlecht");
 
 
-            CamVariableMgmt.updateCamVariables();
+            CamVariableMgmt.updateCamVariables(delegateTask, Prozess_ID);
 
         } catch (Exception e) {
             System.out.println("Fehler: " + e.getMessage());
