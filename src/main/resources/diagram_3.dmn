@@ -30,14 +30,6 @@
           <text>"Kraft-Zirkel"</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_09fu0qa">
-        <inputEntry id="UnaryTests_15tznvw">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1abtreh">
-          <text></text>
-        </outputEntry>
-      </rule>
     </decisionTable>
   </decision>
   <inputData id="Koerperfettmasse" name="Koerperfettmasse" />
