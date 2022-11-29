@@ -99,10 +99,8 @@
     <bpmn:sequenceFlow id="Flow_1ueaeqd" sourceRef="Activity_0h1tgsc" targetRef="Gateway_0vyfvig" />
     <bpmn:sequenceFlow id="Flow_09yghbm" sourceRef="Gateway_0vyfvig" targetRef="Gateway_01m3tr7" />
     <bpmn:sequenceFlow id="Flow_11tkirp" sourceRef="Gateway_01m3tr7" targetRef="Event_1xl94mj" />
-    <bpmn:userTask id="Activity_1ct71fr" name="Training dokumentieren" camunda:formRef="Trainingsdokumentation" camunda:formRefBinding="latest" camunda:assignee="demo">
-      <bpmn:extensionElements>
-        <camunda:taskListener class="org.example.EndDokumentationTrainingDelegate" event="complete" />
-      </bpmn:extensionElements>
+    <bpmn:userTask id="Activity_1ct71fr" name="Training dokumentieren" camunda:formKey="embedded:app:forms/trainingsdokumentation.html" camunda:assignee="demo">
+      <bpmn:extensionElements />
       <bpmn:incoming>Flow_1vs7ap2</bpmn:incoming>
       <bpmn:outgoing>Flow_1l8ommm</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_10sgp9p">

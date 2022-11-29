@@ -5,10 +5,8 @@
 
   <process-archive>
     <process-engine>default</process-engine>
-    
-    <resource>trainigsdokumentation.form</resource>
-    <resource>diagram_3.dmn</resource>
 
+    <resource>diagram_3.dmn</resource>
 
     <properties>
       <property name="isDeleteUponUndeploy">true</property>

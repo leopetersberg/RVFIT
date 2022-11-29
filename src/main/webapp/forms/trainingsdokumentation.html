@@ -10,49 +10,80 @@
 
 
   
-    <link href="signature/assets/jquery.signaturepad.css" rel="stylesheet">
+    <link href="/../../../../RVFIT/forms/signature/assets/jquery.signaturepad.css" rel="stylesheet">
     <!--[if lt IE 9]><script src="../assets/flashcanvas.js"></script><![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   
   </head>
-<img src="../logo.svg">
+<img src="/../../../../RVFIT/forms/logo.svg">
 
 
-<form>
-    <div class="form-group">
+<form class="form-horizontal">
+    <div class="form-group sigPad">
         <div class="col-sm-10">
-            <label for="datum" class="col-sm-2 control-label">Datum</label>
-            <input type="date" name="datum" cam-variable-name="datum" cam-variable-type="date" required
-                class="form-control" />
+            <label for="datum" class="control-label">Datum</label>
+            <input type="date" 
+                    name="datum" 
+                    cam-variable-name="datum" 
+                    cam-variable-type="String" 
+                    required
+                    class="form-control" />
         </div>
 
         <!-- Hier die Trainingsvariante und die Anzahl der bisherigen Trainings (bzw. das wie vielte Mal heute traininert wurde) anzeigen-->
 
 
+        <div class="col-sm-10">
+        <label class="control-label">Unterschrift:</label>
+                <div class="clearButton"><a href="#clear">Clear</a></div>
+                <canvas class="pad" id="SignatureCanvas" width="600" height="159" ></canvas>
+                <input type="hidden" 
+                        name="output" 
+                        class="output">
+                <input type="hidden" 
+                        name="signatureBase64"
+                        id="signatureBase64"
+                        class="form-control">
+
+                <script src="/../../../../RVFIT/forms/signature/jquery.signaturepad.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('.sigPad').signaturePad({
+                            drawOnly:true, 
+                            lineTop : 130,
+
+                            onDrawEnd :function (){
+                                document.getElementById("signatureBase64").value = document.getElementById("SignatureCanvas").toDataURL()
+                            }
+                        
+                        });
+                    });
+                </script>
+                <script src="/../../../../RVFIT/forms/signature/assets/json2.min.js"></script>
+        </div>
     </div>
+
+
+    
+<script cam-script type="text/form-script">
+  
+    camForm.on('submit', function() {
+        var signatureBase64JSON = {
+            signatureBase64 : document.getElementById("SignatureCanvas").toDataURL()
+        }
+        
+    
+      // declare a 'json' variable 'customer'
+      camForm.variableManager.createVariable({
+        name: 'signatureBase64JSON',
+        type: 'json',
+        value: signatureBase64JSON
+      });
+    });
+  </script>
+
+
+
 </form>
 
 
-
-<div class="card">
-  <div class="card-header">
-    Unterschrift:
-  </div>
-  <div class="card-body">
-
-
-<form method="post" action="" class="sigPad">
-    <div class="clearButton"><a href="#clear">Clear</a></div>
-    <canvas class="pad" width="600" height="159" ></canvas>
-    <input type="hidden" name="output" class="output">
-
-  <button type="submit">Absenden</button>
-</form>
-
-<script src="signature/jquery.signaturepad.js"></script>
-<script>
-  $(document).ready(function() {
-    $('.sigPad').signaturePad({drawOnly:true, lineTop : 130});
-  });
-</script>
-<script src="signature/assets/json2.min.js"></script></div></div>
