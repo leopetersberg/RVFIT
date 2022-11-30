@@ -3,4 +3,7 @@ org/example/ErfassungsbogenDelegate.class
 org/example/LoggerDelegate.class
 org/example/CamundaBpmProcessApplication.class
 org/example/EndDokumentationTrainingDelegate.class
+org/example/StammdatenCompleteDelegate.class
+org/example/UntersuchungCompleteDelegate.class
+org/example/CamVariableMgmt.class
 org/example/DBConnection.class

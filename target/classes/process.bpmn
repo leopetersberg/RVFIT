@@ -22,12 +22,14 @@
         <bpmn:flowNodeRef>Activity_0h1tgsc</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="StartEvent_1" name="Beginn Phase 2">
+    <bpmn:startEvent id="StartEvent_1" name="Beginn Phase 2" camunda:formKey="embedded:app:forms/start-form.html">
       <bpmn:extensionElements />
       <bpmn:outgoing>Flow_1vm10od</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="Activity_1kwnyr1" name="Stammdaten erfassen" camunda:formKey="embedded:app:forms/stammdaten.html" camunda:assignee="demo">
-      <bpmn:extensionElements />
+      <bpmn:extensionElements>
+        <camunda:taskListener class="org.example.StammdatenCompleteDelegate" event="complete" id="org.example.StammdatenCompleteDelegate" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1vm10od</bpmn:incoming>
       <bpmn:outgoing>Flow_10qezvu</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_12ndp3k">
@@ -40,7 +42,9 @@
       <bpmn:outgoing>Flow_0ykvfjc</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="Activity_0miftfa" name="Untersuchung" camunda:formKey="embedded:app:forms/erfassungsbogen.html" camunda:assignee="demo">
-      <bpmn:extensionElements />
+      <bpmn:extensionElements>
+        <camunda:taskListener class="org.example.UntersuchungCompleteDelegate" event="complete" id="org.example.UntersuchungCompleteDelegate" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_0ykvfjc</bpmn:incoming>
       <bpmn:outgoing>Flow_0r9nk78</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_1fc0zj1">
@@ -78,7 +82,7 @@
       <bpmn:incoming>Flow_0bdexvq</bpmn:incoming>
       <bpmn:outgoing>Flow_1vs7ap2</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:userTask id="Activity_0h1tgsc" name="Kunde unterschreibt">
+    <bpmn:userTask id="Activity_0h1tgsc" name="Kunde unterschreibt" camunda:formKey="embedded:app:forms/trainingsdokumentationKunde.html">
       <bpmn:incoming>Flow_1l8ommm</bpmn:incoming>
       <bpmn:outgoing>Flow_1ueaeqd</bpmn:outgoing>
     </bpmn:userTask>

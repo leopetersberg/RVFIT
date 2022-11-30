@@ -14,19 +14,20 @@ public class DBConnection {
         }
         private static void createConnection() {
 
-            String url = "jdbc:sqlite:./test.db";
+            String url = "jdbc:sqlite:./Datenbank.db";
 
             try {
+                Class.forName("org.sqlite.JDBC");
                 conn = DriverManager.getConnection(url);
                 if (conn != null) {
                     DatabaseMetaData meta = conn.getMetaData();
-                    System.out.println("The driver name is " + meta.getDriverName());
-                    System.out.println("A new database has been created.");
                     createTables(conn);
                 }
 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
+            }catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
 
@@ -50,7 +51,7 @@ public class DBConnection {
 
             sql = "CREATE TABLE IF NOT EXISTS\"Training\" (\n" +
                     "    \"Trainings_ID\"    INTEGER NOT NULL UNIQUE,\n" +
-                    "    \"Prozess_ID\"    INTEGER,\n" +
+                    "    \"Prozess_ID\"    TEXT,\n" +
                     "    \"Trainingsdatum\"    TEXT,\n" +
                     "    \"Trainingsvariante\"    TEXT,\n" +
                     "    \"Unterschrift_Trainer\"    BLOB,\n" +
@@ -67,12 +68,12 @@ public class DBConnection {
             }
 
             sql = "CREATE TABLE IF NOT EXISTS \"Prozess\" (\n" +
-                    "    \"Prozess_ID\"    INTEGER NOT NULL UNIQUE,\n" +
+                    "    \"Prozess_ID\"    TEXT NOT NULL UNIQUE,\n" +
                     "    \"Kunden_ID\"    INTEGER,\n" +
                     "    \"Status\"    TEXT,\n" +
                     "    \"Trainingsvariante_aktuell\"    TEXT,\n" +
                     "    FOREIGN KEY(\"Kunden_ID\") REFERENCES \"Kunde\"(\"Kunden_ID\"),\n" +
-                    "    PRIMARY KEY(\"Prozess_ID\" AUTOINCREMENT)\n" +
+                    "    PRIMARY KEY(\"Prozess_ID\")\n" +
                     ")";
 
             try {
@@ -84,14 +85,14 @@ public class DBConnection {
 
             sql = "CREATE TABLE IF NOT EXISTS\"Untersuchung\" (\n" +
                     "    \"Untersuchung_ID\"    INTEGER NOT NULL UNIQUE,\n" +
-                    "    \"Prozess_ID\"    INTEGER,\n" +
+                    "    \"Prozess_ID\"    TEXT,\n" +
                     "    \"Typ\"    TEXT,\n" +
                     "    \"Testtag_zeit\"    TEXT,\n" +
                     "    \"Gewicht_kg\"    REAL,\n" +
                     "    \"Skelettmuskelmasse_kg\"    REAL,\n" +
                     "    \"Koerperfettmassekg\"    REAL,\n" +
                     "    \"BMI\"    REAL,\n" +
-                    "    \"Koerperfett%\"    REAL,\n" +
+                    "    \"KoerperfettProz\"    REAL,\n" +
                     "    FOREIGN KEY(\"Prozess_ID\") REFERENCES \"Prozess\"(\"Prozess_ID\"),\n" +
                     "    PRIMARY KEY(\"Untersuchung_ID\" AUTOINCREMENT)\n" +
                     ")";
