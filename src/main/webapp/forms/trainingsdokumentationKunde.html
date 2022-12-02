@@ -1,41 +1,27 @@
 
 <head>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-
-  
-    <link href="/../../../../RVFIT/forms/signature/assets/jquery.signaturepad.css" rel="stylesheet">
+   <link href="/../../../../RVFIT/forms/signature/assets/jquery.signaturepad.css" rel="stylesheet">
     <!--[if lt IE 9]><script src="../assets/flashcanvas.js"></script><![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-  
-  </head>
+</head>
 
-
+<!--
+    <link href="/../../../../RVFIT/forms/bootstrap.min.css" rel="stylesheet" >
+-->
 
 <form class="form-horizontal">
-    <img class="float-right" src="/../../../../RVFIT/forms/logo.svg">
+    <img style="float: right" src="/../../../../RVFIT/forms/logo.svg">
+    <div id="zusammenfassungPatient" >
+        <h2>Patient: <spawn id="patient"></spawn></h2>
+    </div>
+
+    <div>
+        <span id="text"></span>
+    </div>
+
     <div class="form-group sigPad">
         <div class="col-sm-10">
-            <label for="datum" class="control-label">Datum</label>
-            <input type="date" 
-                    name="datum" 
-                    cam-variable-name="datum" 
-                    cam-variable-type="String" 
-                    required
-                    class="form-control" />
-        </div>
-
-        <!-- Hier die Trainingsvariante und die Anzahl der bisherigen Trainings (bzw. das wie vielte Mal heute traininert wurde) anzeigen-->
-
-
-        <div class="col-sm-10">
-        <label class="control-label">Unterschrift:</label>
+        <label >Unterschrift Patient:</label>
                 <div class="clearButton"><a href="#clear">Clear</a></div>
                 <canvas class="pad" id="SignatureCanvas" width="600" height="159" ></canvas>
                 <input type="hidden" 
@@ -82,6 +68,23 @@
       });
     });
   </script>
+
+    <script type="text/javascript" src="/../../../../RVFIT/forms/extractZusammenfassung.js"></script>
+    <script cam-script type="text/form-script">
+    var variableManager = camForm.variableManager;
+    camForm.on('form-loaded', function() {
+      // this callback is executed *before* the variables are loaded from the server.
+      // if we declare a variable here, its value will be fetched as well
+      variableManager.fetchVariable('zusammenfassung');
+    });
+
+    camForm.on('variables-fetched', function() {
+      // this callback is executed *after* the variables have been fetched from the server
+      var jsonZusammenfassung = variableManager.variableValue('zusammenfassung');
+
+      extractZusammenfassung(jsonZusammenfassung);
+    });
+</script>
 
 
 
