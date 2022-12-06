@@ -31,6 +31,7 @@ public class CamVariableMgmt {
 
             updateZusammenfassung(variableScope, Prozess_ID);
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }

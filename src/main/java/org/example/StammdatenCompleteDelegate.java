@@ -85,6 +85,7 @@ public class StammdatenCompleteDelegate implements TaskListener {
 
             CamVariableMgmt.updateCamVariables(delegateTask, Prozess_ID);
 
+
         } catch (Exception e) {
             System.out.println("Fehler: " + e.getMessage());
         }
