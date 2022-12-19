@@ -1,0 +1,44 @@
+<form class="form-horizontal">
+  <script src="/../../../../RVFIT/forms/reporting/chart.js"></script>
+  <script src="/../../../../RVFIT/forms/reporting/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="/../../../../RVFIT/forms/reporting/reporting.js"></script>
+
+  <img style="float: right" height="150px" src="/../../../../RVFIT/forms/logo.jpeg">
+  <h1>RV-FIT</h1>
+  <h2 style="margin: 50px;">Verteilung der Trainingsvarianten Gesamt</h2>
+  <div class="form-group">
+    <div>
+      <canvas style="margin: 50px;" id="myChart"></canvas>
+    </div>
+
+    <h2 style="margin: 50px;">Zeit seit Eingangsuntersuchung und Anzahl der Trainings</h2>
+
+    <div>
+      <canvas style="margin: 50px;" id="dauerUndAnzahlTrainings"></canvas>
+    </div>
+
+    
+
+
+    <script cam-script type="text/form-script">
+
+      var variableManager = camForm.variableManager;
+      camForm.on('form-loaded', function() {
+        variableManager.fetchVariable('VerteilungTVGesamt');
+        variableManager.fetchVariable('dauerUndAnzahlTrainings');
+      });
+  
+      camForm.on('variables-fetched', function() {
+       var VerteilungTVGesamt = variableManager.variableValue('VerteilungTVGesamt');
+       setVerteilungTVGesamt(VerteilungTVGesamt);
+       var dauerUndAnzahlTrainings = variableManager.variableValue('dauerUndAnzahlTrainings');
+       setdauerUndAnzahlTrainings(dauerUndAnzahlTrainings);
+      });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderChart();
+    });
+  </script>
+  </div>
+</form>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0a48jhy" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:collaboration id="Collaboration_19oyr6r">
+    <bpmn:participant id="Participant_1h3cs58" name="RV-FIT-Analytics" processRef="RV-fit-Analytics" />
+  </bpmn:collaboration>
+  <bpmn:process id="RV-fit-Analytics" name="RV-fit-Analytics" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1m6nvjo">
+      <bpmn:lane id="Lane_0dlwv93" name="Trainer">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1kwnyr1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1xl94mj</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Beginn Phase 2">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_1vm10od</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_1kwnyr1" name="Reporting anzeigen" camunda:formKey="embedded:app:forms/reporting/reporting.html" camunda:assignee="demo">
+      <bpmn:extensionElements>
+        <camunda:taskListener class="org.example.reporting.AnzeigenRepotingStartDelegate" event="create" id="org.example.reporting.AnzeigenRepotingStartDelegate" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vm10od</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tso2cy</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_12ndp3k">
+        <bpmn:targetRef>DataStoreReference_1y9eq5e</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1xl94mj" name="Ende Phase 2">
+      <bpmn:incoming>Flow_0tso2cy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataStoreReference id="DataStoreReference_1y9eq5e" name="relationale Datenbank" />
+    <bpmn:sequenceFlow id="Flow_1vm10od" sourceRef="StartEvent_1" targetRef="Activity_1kwnyr1" />
+    <bpmn:sequenceFlow id="Flow_0tso2cy" sourceRef="Activity_1kwnyr1" targetRef="Event_1xl94mj" />
+    <bpmn:textAnnotation id="TextAnnotation_0ycsoel">
+      <bpmn:text>RV-Fit</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_19oyr6r">
+      <bpmndi:BPMNShape id="Participant_1h3cs58_di" bpmnElement="Participant_1h3cs58" isHorizontal="true">
+        <dc:Bounds x="140" y="80" width="410" height="390" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0dlwv93_di" bpmnElement="Lane_0dlwv93" isHorizontal="true">
+        <dc:Bounds x="170" y="80" width="380" height="390" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0ycsoel_di" bpmnElement="TextAnnotation_0ycsoel">
+        <dc:Bounds x="190" y="100" width="100" height="30" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="181" y="372" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="181" y="415" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1lietg2_di" bpmnElement="Activity_1kwnyr1">
+        <dc:Bounds x="279" y="350" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1xl94mj_di" bpmnElement="Event_1xl94mj">
+        <dc:Bounds x="472" y="372" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="455" y="415" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1y9eq5e_di" bpmnElement="DataStoreReference_1y9eq5e">
+        <dc:Bounds x="285" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="343" y="196" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1vm10od_di" bpmnElement="Flow_1vm10od">
+        <di:waypoint x="217" y="390" />
+        <di:waypoint x="279" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tso2cy_di" bpmnElement="Flow_0tso2cy">
+        <di:waypoint x="379" y="390" />
+        <di:waypoint x="472" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_12ndp3k_di" bpmnElement="DataOutputAssociation_12ndp3k">
+        <di:waypoint x="325" y="350" />
+        <di:waypoint x="313" y="235" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,5 @@
+1. aktiveProzesse - KPI aktive Prozesse im Vergeleich letzte 30 Tage vs vorherige 30 Tage
+?  durschlitteliche Dauer der Prozesse im vergleich letzte 30 Tage vs vorherige 30 Tage
+2. verteilungTVAktuell - Verteilung Traininvsvarianten letzte 30 TAge
+3. verteilungTVGesamt - Verteilung Trainingsvarianten gesammt
+4. dauerUndAnzahlTrainings - Dauer seit Eingangsuntersuchung und anzahl Trainings

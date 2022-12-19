@@ -7,6 +7,7 @@ org/example/UntersuchungCompleteDelegate.class
 org/json/JSONPointer$Builder.class
 org/example/AuswahlTrainingsmethodeEndDelegate.class
 org/json/XMLXsiTypeConverter.class
+org/example/reporting/AnzeigenRepotingStartDelegate.class
 org/json/JSONWriter.class
 org/json/JSONObject$1.class
 org/example/CamundaBpmProcessApplication.class
