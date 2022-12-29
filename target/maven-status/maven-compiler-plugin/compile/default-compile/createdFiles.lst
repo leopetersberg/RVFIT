@@ -35,3 +35,4 @@ org/example/CamVariableMgmt.class
 org/example/TrainingDokumentationKundeCompleteDelegate.class
 org/json/JSONML.class
 org/example/TrainingDokumentationTrainerCompleteDelegate.class
+org/example/reporting/DemoData.class
