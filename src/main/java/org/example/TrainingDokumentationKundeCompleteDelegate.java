@@ -16,7 +16,6 @@ public class TrainingDokumentationKundeCompleteDelegate implements TaskListener 
         try {
             SpinJsonNode signatureNode = (SpinJsonNode) delegateTask.getVariable("signatureBase64JSON");
             String signatureBase64 = signatureNode.jsonPath("$.signatureBase64").stringValue();
-            String datum = (String) delegateTask.getVariable("datum");
             String prozessID = (String) delegateTask.getProcessInstanceId();
 
             //TrainingsID mit höchster TrainingsID auslesen

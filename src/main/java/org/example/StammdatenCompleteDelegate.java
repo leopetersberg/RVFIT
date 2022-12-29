@@ -1,6 +1,5 @@
 package org.example;
 
-import camundajar.impl.scala.Int;
 import org.camunda.bpm.engine.delegate.DelegateTask;
 import org.camunda.bpm.engine.delegate.TaskListener;
 

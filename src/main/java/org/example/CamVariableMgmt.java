@@ -2,16 +2,13 @@ package org.example;
 
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.spin.Spin;
-import org.camunda.spin.impl.json.jackson.JacksonJsonNode;
 import org.camunda.spin.json.SpinJsonNode;
-import spinjar.com.fasterxml.jackson.databind.JsonNode;
 import spinjar.com.fasterxml.jackson.databind.node.ArrayNode;
 import spinjar.com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import spinjar.com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 
 public class CamVariableMgmt {
 

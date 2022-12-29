@@ -27,8 +27,27 @@ function renderChartVerteilungTVGesamt(){
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'Anzahl der Trainings'
+            }
+          },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Trainingsvarianten'
+                }
+            }
+        },
+        plugins: {
+            title: {
+                display: true,
+                font:{
+                    size: 30
+                },
+                text: 'Verteilung der Trainingsvarianten Gesamt'
+            }
         }
       }
     }
@@ -59,11 +78,19 @@ function renderChartdauerUndAnzahlTrainings() {
           type: 'time',
           time: {
             unit: 'day'
+          },
+          title: {
+            display: true,
+            text: 'Eingangsuntersuchung',
           }
         },
         y: {
           min : 0,
-          max: 24
+          max: 24,
+            title: {
+              display: true,
+              text: 'Anzahl der Trainings'
+            }
         }
       },
       plugins: {
@@ -76,6 +103,13 @@ function renderChartdauerUndAnzahlTrainings() {
             },
           },
         },
+        title: {
+          display: true,
+          font:{
+            size: 30
+          },
+          text: 'Zeit seit Eingangsuntersuchung und Anzahl der Trainings'
+        }
       },
     }
   };

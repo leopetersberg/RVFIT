@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.reporting.DemoData;
+
 import java.sql.*;
 
 public class DBConnection {
@@ -13,17 +15,21 @@ public class DBConnection {
                 return conn;
         }
         private static void createConnection() {
-
-            String url = "jdbc:sqlite:./Datenbank.db";
-
             try {
+                String url = "jdbc:sqlite:./Datenbank.db";
                 Class.forName("org.sqlite.JDBC");
                 conn = DriverManager.getConnection(url);
                 if (conn != null) {
-                    DatabaseMetaData meta = conn.getMetaData();
                     createTables(conn);
                 }
 
+                //ggfls. Demo-Daten einfügen
+                String sql = "SELECT count(Prozess_ID) FROM Prozess";
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                if (rs.getInt(1) == 0) {
+                    DemoData.insert();
+                }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }catch (ClassNotFoundException e) {
